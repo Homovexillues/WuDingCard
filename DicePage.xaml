@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WuDingCard.DicePage"
+             Title="骰子">
+    <VerticalStackLayout>
+        <Label
+            x:Name="OneDiceFour"
+            Text="1D4="
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+        <Button
+            x:Name="RollDiceFour"
+            Text="1D4=" 
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="RollOneDiceFour"
+            HorizontalOptions="Fill" />
+        <Label
+            x:Name="OneDiceSix"
+            Text="1D6="
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+        <Button
+            x:Name="RollDiceSix"
+            Text="1D6=" 
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="RollOneDiceSix"
+            HorizontalOptions="Fill" />
+        <Label
+            x:Name="OneDiceEight"
+            Text="1D8="
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+        <Button
+            x:Name="RollDiceEight"
+            Text="1D8=" 
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="RollOneDiceEight"
+            HorizontalOptions="Fill" />
+        <Label
+            x:Name="OneDiceTen"
+            Text="1D10="
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+        <Button
+            x:Name="RollDiceTen"
+            Text="1D10" 
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="RollOneDiceTen"
+            HorizontalOptions="Fill" />
+        <Label
+            x:Name="OneDiceTwenty"
+            Text="1D20="
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+        <Button
+            x:Name="RollDiceTwenty"
+            Text="1D20=" 
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="RollOneDiceTwenty"
+            HorizontalOptions="Fill" />
+        <Label
+            x:Name="OneDiceHundred"
+            Text="1D100="
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+        <Button
+            x:Name="RollDiceHundred"
+            Text="1D100=" 
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="RollOneDiceHundred"
+            HorizontalOptions="Fill" />
+    </VerticalStackLayout>
+</ContentPage>

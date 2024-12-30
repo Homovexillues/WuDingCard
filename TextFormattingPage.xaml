@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WuDingCard.TextFormattingPage"
+             Title="TextFormattingPage">
+    <VerticalStackLayout>
+        <Editor
+            x:Name="InputEditor"
+            Text="请在此输入"
+            AutoSize="TextChanges"
+            FontSize="20"/>
+        <Button Text="转换为竖排文字"
+                FontSize="20"
+                Clicked="ConvertToVertical" />
+        <Button Text="转换为火星文"
+                FontSize="20"
+                Clicked="ConvertToMarFont"/>
+        <Editor 
+            x:Name="OutputEditor"
+            Text="此处显示输出内容"
+            AutoSize="TextChanges"
+            VerticalOptions="Start" 
+            HorizontalOptions="Start" />
+    </VerticalStackLayout>
+</ContentPage>
