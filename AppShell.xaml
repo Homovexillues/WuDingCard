@@ -14,16 +14,17 @@
     <ShellContent
         Title="骰子"
         ContentTemplate="{DataTemplate local:DicePage}"
-        Route="DicePage"
-        />
+        Route="DicePage" />
     <ShellContent
         Title="获取设备IP地址"
         ContentTemplate="{DataTemplate local:GetIpPage}"
-        Route="GetIpPage"
-        />
+        Route="GetIpPage" />
     <ShellContent
         Title="处理文字格式"
         ContentTemplate="{DataTemplate local:TextFormattingPage}"
-        Route="TextFormattingPage"
-        />
+        Route="TextFormattingPage" />
+    <ShellContent
+        Title="每日新闻"
+        ContentTemplate="{DataTemplate local:DailyNewsPage}"
+        Route="DailyNewsPage" />
 </Shell>

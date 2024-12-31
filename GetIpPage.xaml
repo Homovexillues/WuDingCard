@@ -7,15 +7,15 @@
         <Button
             x:Name="GetIpButton"
             Text="点击获取设备IP地址"
-            Clicked="GetIps"/>
+            Clicked="GetIps" />
         <CollectionView ItemsSource="{Binding InterfaceItems}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Vertical" Padding="10">
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
-                               FontSize="Medium"/>
-                        <Label Text="{Binding Address}"/>
+                               FontSize="Medium" />
+                        <Label Text="{Binding Address}" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
