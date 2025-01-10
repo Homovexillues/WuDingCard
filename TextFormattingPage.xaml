@@ -2,11 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WuDingCard.TextFormattingPage"
-             Title="TextFormattingPage">
+             Title="文字格式处理">
     <VerticalStackLayout>
         <Editor
             x:Name="InputEditor"
-            Text="请在此输入"
+            Placeholder="请在此输入"
+            PlaceholderColor="Black"
+            Text=""
             AutoSize="TextChanges"
             FontSize="20"/>
         <Button Text="转换为竖排文字"
@@ -17,7 +19,9 @@
                 Clicked="ConvertToMarFont"/>
         <Editor 
             x:Name="OutputEditor"
-            Text="此处显示输出内容"
+            Placeholder="此处显示输出内容"
+            PlaceholderColor="Black"
+            Text=""
             AutoSize="TextChanges"
             VerticalOptions="Start" 
             HorizontalOptions="Start" />

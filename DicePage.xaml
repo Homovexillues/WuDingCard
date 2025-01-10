@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WuDingCard.DicePage"
              Title="骰子">
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="20">
         <Label
             x:Name="OneDiceFour"
             Text="1D4="
@@ -76,5 +76,35 @@
             SemanticProperties.Hint="Counts the number of times you click"
             Clicked="RollOneDiceHundred"
             HorizontalOptions="Fill" />
+        <!--用这个控件将内容限定在一行里-->
+        <HorizontalStackLayout Spacing="10" VerticalOptions="Fill" HorizontalOptions="Center">
+            <Editor x:Name="InputDiceCount"
+                FontSize="24"
+                HorizontalTextAlignment="End"
+                VerticalOptions="Center"
+                Placeholder="骰子数量"
+                Margin="0"
+                BackgroundColor="Transparent"
+                Text="{Binding DiceCount,Mode=TwoWay}"/>
+            <Label Text="D"
+                FontSize="24"
+                VerticalOptions="Center"/>
+            <Entry x:Name="InputSidedCount"
+                FontSize="24"
+                Placeholder="骰子面数"
+                Text="{Binding SidedCount, Mode=TwoWay}"/>
+            <Label Text="="
+                FontSize="24"
+                VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+        <Editor x:Name="OutputResult"
+            FontSize="24"
+            Placeholder="结果"
+            HorizontalOptions="FillAndExpand"
+            IsReadOnly="True"
+            Text="{Binding Result}"/>
+        <Button Text="{Binding ButtonText}"
+            Clicked="RollCustomizeDice"
+            HorizontalOptions="Fill"/>
     </VerticalStackLayout>
 </ContentPage>
