@@ -4,26 +4,30 @@
              x:Class="WuDingCard.TextFormattingPage"
              Title="文字格式处理">
     <VerticalStackLayout>
+        <VerticalStackLayout.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Right"
+            Swiped="OnSwipedHandler" />
+        </VerticalStackLayout.GestureRecognizers>
         <Editor
             x:Name="InputEditor"
             Placeholder="请在此输入"
             PlaceholderColor="Black"
             Text=""
             AutoSize="TextChanges"
-            FontSize="20"/>
+            FontSize="20" />
         <Button Text="转换为竖排文字"
                 FontSize="20"
                 Clicked="ConvertToVertical" />
         <Button Text="转换为火星文"
                 FontSize="20"
-                Clicked="ConvertToMarFont"/>
-        <Editor 
+                Clicked="ConvertToMarFont" />
+        <Editor
             x:Name="OutputEditor"
             Placeholder="此处显示输出内容"
             PlaceholderColor="Black"
             Text=""
             AutoSize="TextChanges"
-            VerticalOptions="Start" 
+            VerticalOptions="Start"
             HorizontalOptions="Start" />
     </VerticalStackLayout>
 </ContentPage>

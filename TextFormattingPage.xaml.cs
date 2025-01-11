@@ -2,21 +2,22 @@ using System.Text.Json;
 
 namespace WuDingCard;
 
-public partial class TextFormattingPage : ContentPage
+public partial class TextFormattingPage:ContentPage
 {
-	public TextFormattingPage()
-	{
+	public TextFormattingPage() {
 		InitializeComponent();
 	}
-	private void ConvertToVertical(object sender, EventArgs e) {
+
+	private void ConvertToVertical(object sender,EventArgs e) {
 		var result = string.Empty;
 		foreach(var font in InputEditor.Text) {
 			if(char.Equals(font,' ')) continue;
-			result += font+"\n";
+			result += font + "\n";
 		}
 		OutputEditor.Text = result;
 		SemanticScreenReader.Announce(OutputEditor.Text);
 	}
+
 	private async void ConvertToMarFont(object sender,EventArgs e) {
 		var result = string.Empty;
 		using var stream = await FileSystem.OpenAppPackageFileAsync("Resources/Config/MarFont.json");
@@ -29,5 +30,9 @@ public partial class TextFormattingPage : ContentPage
 		}
 		OutputEditor.Text = result;
 		SemanticScreenReader.Announce(OutputEditor.Text);
+	}
+
+	private void OnSwipedHandler(object sender,SwipedEventArgs e) {
+		App.HandleGlobalSwipe(e);
 	}
 }

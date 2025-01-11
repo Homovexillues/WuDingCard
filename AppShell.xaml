@@ -4,13 +4,14 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WuDingCard"
-    Shell.FlyoutBehavior="Flyout"
+    FlyoutBehavior="Flyout"
     Title="WuDingCard">
 
     <ShellContent
         Title="主页"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
     <ShellContent
         Title="骰子"
         ContentTemplate="{DataTemplate local:DicePage}"

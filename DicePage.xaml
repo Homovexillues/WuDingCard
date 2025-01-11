@@ -4,6 +4,10 @@
              x:Class="WuDingCard.DicePage"
              Title="骰子">
     <VerticalStackLayout Padding="20">
+        <VerticalStackLayout.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Right"
+                        Swiped="OnSwipedHandler" />
+        </VerticalStackLayout.GestureRecognizers>
         <Label
             x:Name="OneDiceFour"
             Text="1D4="
@@ -12,7 +16,7 @@
             SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
         <Button
             x:Name="RollDiceFour"
-            Text="1D4=" 
+            Text="1D4="
             SemanticProperties.Hint="Counts the number of times you click"
             Clicked="RollOneDiceFour"
             HorizontalOptions="Fill" />
@@ -24,7 +28,7 @@
             SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
         <Button
             x:Name="RollDiceSix"
-            Text="1D6=" 
+            Text="1D6="
             SemanticProperties.Hint="Counts the number of times you click"
             Clicked="RollOneDiceSix"
             HorizontalOptions="Fill" />
@@ -36,7 +40,7 @@
             SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
         <Button
             x:Name="RollDiceEight"
-            Text="1D8=" 
+            Text="1D8="
             SemanticProperties.Hint="Counts the number of times you click"
             Clicked="RollOneDiceEight"
             HorizontalOptions="Fill" />
@@ -48,7 +52,7 @@
             SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
         <Button
             x:Name="RollDiceTen"
-            Text="1D10" 
+            Text="1D10"
             SemanticProperties.Hint="Counts the number of times you click"
             Clicked="RollOneDiceTen"
             HorizontalOptions="Fill" />
@@ -60,7 +64,7 @@
             SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
         <Button
             x:Name="RollDiceTwenty"
-            Text="1D20=" 
+            Text="1D20="
             SemanticProperties.Hint="Counts the number of times you click"
             Clicked="RollOneDiceTwenty"
             HorizontalOptions="Fill" />
@@ -72,7 +76,7 @@
             SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
         <Button
             x:Name="RollDiceHundred"
-            Text="1D100=" 
+            Text="1D100="
             SemanticProperties.Hint="Counts the number of times you click"
             Clicked="RollOneDiceHundred"
             HorizontalOptions="Fill" />
@@ -85,26 +89,26 @@
                 Placeholder="骰子数量"
                 Margin="0"
                 BackgroundColor="Transparent"
-                Text="{Binding DiceCount,Mode=TwoWay}"/>
+                Text="{Binding DiceCount,Mode=TwoWay}" />
             <Label Text="D"
                 FontSize="24"
-                VerticalOptions="Center"/>
+                VerticalOptions="Center" />
             <Entry x:Name="InputSidedCount"
                 FontSize="24"
                 Placeholder="骰子面数"
-                Text="{Binding SidedCount, Mode=TwoWay}"/>
+                Text="{Binding SidedCount, Mode=TwoWay}" />
             <Label Text="="
                 FontSize="24"
-                VerticalOptions="Center"/>
+                VerticalOptions="Center" />
         </HorizontalStackLayout>
         <Editor x:Name="OutputResult"
             FontSize="24"
             Placeholder="结果"
             HorizontalOptions="FillAndExpand"
             IsReadOnly="True"
-            Text="{Binding Result}"/>
+            Text="{Binding Result}" />
         <Button Text="{Binding ButtonText}"
             Clicked="RollCustomizeDice"
-            HorizontalOptions="Fill"/>
+            HorizontalOptions="Fill" />
     </VerticalStackLayout>
 </ContentPage>

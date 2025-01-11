@@ -7,6 +7,10 @@
         <VerticalStackLayout
             Padding="0,0"
             Spacing="25">
+            <VerticalStackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right"
+            Swiped="OnSwipedHandler" />
+            </VerticalStackLayout.GestureRecognizers>
             <Image
                 Source="toph.JPG"
                 HeightRequest="700"
@@ -14,8 +18,7 @@
                 SemanticProperties.Description="dot net bot in a hovercraft number nine" />
             <Button
                 Text="你好"
-                Clicked="ALOHA"/>
+                Clicked="ALOHA" />
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

@@ -4,6 +4,10 @@
              x:Class="WuDingCard.GetIpPage"
              Title="获取设备IP地址">
     <VerticalStackLayout>
+        <VerticalStackLayout.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Right"
+            Swiped="OnSwipedHandler" />
+        </VerticalStackLayout.GestureRecognizers>
         <Button
             x:Name="GetIpButton"
             Text="点击获取设备IP地址"
