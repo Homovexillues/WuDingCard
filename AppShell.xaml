@@ -28,4 +28,16 @@
         Title="每日新闻"
         ContentTemplate="{DataTemplate local:DailyNewsPage}"
         Route="DailyNewsPage" />
+    <ShellContent
+        Title="阅读pdf文档"
+        ContentTemplate="{DataTemplate local:ViewPdf}"
+        Route="ViewPdf" />
+    <ShellContent
+        Title="语音合成"
+        ContentTemplate="{DataTemplate local:TextToSpeechPage}"
+        Route="TextToSpeechPage" />
+    <ShellContent
+        Title="当前时间"
+        ContentTemplate="{DataTemplate local:TimePage}"
+        Route="TimePage" />
 </Shell>

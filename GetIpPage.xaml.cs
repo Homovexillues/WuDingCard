@@ -13,12 +13,13 @@ public partial class GetIpPage:ContentPage
 		InitializeComponent();
 		InterfaceItems = [];
 		this.BindingContext = this; //将当前页面的BindingContext设为自己
+		GetIps();
 	}
 
 	/// <summary>
 	/// 获取设备的网卡和IP信息
 	/// </summary>
-	public void GetIps(object sender,EventArgs e) {
+	public void GetIps() {
 		InterfaceItems.Clear();
 		var interfaces = NetworkInterface.GetAllNetworkInterfaces();
 		foreach(var netInterface in interfaces) {

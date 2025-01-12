@@ -8,10 +8,6 @@
             <SwipeGestureRecognizer Direction="Right"
             Swiped="OnSwipedHandler" />
         </VerticalStackLayout.GestureRecognizers>
-        <Button
-            x:Name="GetIpButton"
-            Text="点击获取设备IP地址"
-            Clicked="GetIps" />
         <CollectionView ItemsSource="{Binding InterfaceItems}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
