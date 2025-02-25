@@ -73,13 +73,14 @@
 	<ItemGroup>
 	  <None Remove="Resources\AppIcon\appiconfg.svg" />
 	  <None Remove="Resources\Config\MarFont.json" />
+	  <None Remove="Resources\Documents\hello-algo-1.0.0-zh-csharp.pdf" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiAsset Include="Resources\Config\MarFont.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiAsset>
-	  <MauiAsset Include="Resources\Documents\book1.pdf">
+	  <MauiAsset Include="Resources\Documents\hello-algo-1.0.0-zh-csharp.pdf">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiAsset>
 	</ItemGroup>
@@ -93,6 +94,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="CreateNotificationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="DailyNewsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -100,6 +104,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="GetIpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NoteBookPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NotePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="TextFormattingPage.xaml">
