@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WuDingCard.TodayInHistory"
+             Title="历史上的今天">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <CollectionView ItemsSource="{Binding DaysInHistory}" Grid.Row="1">
+                <!-- 设置分列显示 -->
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                    Span="2" />
+                    <!-- 每行显示 2 列 -->
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!-- 卡片式布局 -->
+                        <Frame Padding="10"
+                               Margin="5"
+                               BackgroundColor="#F0F0F0"
+                               CornerRadius="10"
+                               HasShadow="True">
+                            <StackLayout Orientation="Vertical" Spacing="5">
+                                <!-- 年份 -->
+                                <Label Text="{Binding Year}"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="#333333"
+                                       HorizontalOptions="Center" />
+                                <!-- 描述 -->
+                                <Label Text="{Binding Description}"
+                                       FontSize="14"
+                                       TextColor="#666666"
+                                       HorizontalOptions="Center"
+                                       LineBreakMode="WordWrap" />
+                                <!-- 自动换行 -->
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -40,4 +40,8 @@
         Title="当前时间"
         ContentTemplate="{DataTemplate local:TimePage}"
         Route="TimePage" />
+    <ShellContent
+        Title="历史上的今天"
+        ContentTemplate="{DataTemplate local:TodayInHistory}"
+        Route="TodayInHistory" />
 </Shell>

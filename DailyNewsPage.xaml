@@ -4,30 +4,28 @@
              x:Class="WuDingCard.DailyNewsPage"
              Title="每日新闻">
     <ContentPage.Content>
-        <Grid>
-            <Grid.GestureRecognizers>
-                <SwipeGestureRecognizer Direction="Right"
-                                        Swiped="OnSwipedHandler" />
-            </Grid.GestureRecognizers>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <CollectionView ItemsSource="{Binding DailyNews}" Grid.Row="1">
-                <CollectionView.GestureRecognizers>
+        <ScrollView>
+            <Grid>
+                <Grid.GestureRecognizers>
                     <SwipeGestureRecognizer Direction="Right"
-                    Swiped="OnSwipedHandler" />
-                </CollectionView.GestureRecognizers>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation="Vertical" Padding="10">
-                            <Label Text="{Binding .}"
-                            FontAttributes="Bold"
-                            FontSize="Medium" />
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
+                                        Swiped="OnSwipedHandler" />
+                </Grid.GestureRecognizers>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--添加加载指示器-->
+                <!--就是那个会转的圈-->
+                <ActivityIndicator x:Name="LoadingIndicator"
+                                   IsRunning="True"
+                                   IsVisible="True"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center" />
+                <!--添加Image控件-->
+                <Image x:Name="NewImage"
+                   Aspect="AspectFit"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
