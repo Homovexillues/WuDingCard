@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WuDingCard.SectionPage"
+             Title="主题页">
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="10">
+            <!-- 添加按钮 -->
+            <Button Text="添加主题"
+                    Clicked="OnAddBubbleClicked"
+                    HorizontalOptions="Center"
+                    BackgroundColor="Blue"
+                    TextColor="White" />
+
+            <CollectionView ItemsSource="{Binding DaysInHistory}" SelectionMode="Single">
+                <!-- 设置分列显示 -->
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!-- 绑定点击事件 -->
+                        <Frame Padding="10"
+                               Margin="5"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BackgroundColor="{Binding BubbleColor}">
+                            <StackLayout Orientation="Vertical" Spacing="5">
+                                <Entry Text="{Binding Title}"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center" />
+                                <Label Text="{Binding Description}"
+                                       FontSize="14"
+                                       TextColor="White"
+                                       HorizontalOptions="Center"
+                                       LineBreakMode="WordWrap" />
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

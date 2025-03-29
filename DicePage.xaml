@@ -93,6 +93,7 @@
             <Label Text="D"
                 FontSize="24"
                 VerticalOptions="Center" />
+            <!--添加框中默认显示文本-->
             <Entry x:Name="InputSidedCount"
                 FontSize="24"
                 Placeholder="骰子面数"

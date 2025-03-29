@@ -1,3 +1,4 @@
+using SQLite;
 using System.Collections.ObjectModel;
 
 namespace WuDingCard;
@@ -13,27 +14,33 @@ public partial class NoteBookPage:ContentPage
 	}
 
 	private void LoadNotes() {
-		Notes.Add(new Note { Title = "便签1",Content = "内容1", CreateAt=DateTime.Now});
-		Notes.Add(new Note { Title = "便签2",Content = "内容2",CreateAt = DateTime.Now });
+		Notes.Add(new Note { Title = "笔记本1",Content = "内容1",CreateDate = DateTime.Now });
+		Notes.Add(new Note { Title = "笔记本2",Content = "内容2",CreateDate = DateTime.Now });
 	}
 
 	private async void AddNewNote(object sender,EventArgs e) {
 		await Navigation.PushAsync(new NotePage());
 	}
 
-	private async void ViewNote(object sender,EventArgs e) {
+	private async void ViewSections(object sender,EventArgs e) {
 		var noteId = (sender as Button)?.CommandParameter as string;
 		var note = Notes.FirstOrDefault(n => n.Id == noteId);
 		if(note != null) {
-			await Navigation.PushAsync(new NotePage(note));
+			await Navigation.PushAsync(new SectionPage());
 		}
 	}
 }
 
-public class Note
+public class Notebook
 {
-	public string Id { get; set; } = Guid.NewGuid().ToString();
+	[PrimaryKey, AutoIncrement]
+	public int NotebookId { get; set; }
+
+	[NotNull]
 	public string Title { get; set; }
-	public string Content { get; set; }
-	public DateTime CreateAt { get; set; } = DateTime.Now;
+
+	public string Description { get; set; }
+
+	[Default(value: "CURRENT_TIMESTAMP")]
+	public DateTime CreatedDate { get; set; }
 }

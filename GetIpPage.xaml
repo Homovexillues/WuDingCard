@@ -3,22 +3,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WuDingCard.GetIpPage"
              Title="获取设备IP地址">
-    <VerticalStackLayout>
-        <VerticalStackLayout.GestureRecognizers>
-            <SwipeGestureRecognizer Direction="Right"
-            Swiped="OnSwipedHandler" />
-        </VerticalStackLayout.GestureRecognizers>
-        <CollectionView ItemsSource="{Binding InterfaceItems}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="{Binding Name}"
-                               FontAttributes="Bold"
-                               FontSize="Medium" />
-                        <Label Text="{Binding Address}" />
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+    <Grid RowDefinitions="Auto, Auto, *, Auto">
+        <!-- 网络接口列表（可滚动，但不会占满整个页面） -->
+        <ScrollView Grid.Row="0" HeightRequest="200">
+            <VerticalStackLayout>
+                <VerticalStackLayout.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Right"
+                                            Swiped="OnSwipedHandler" />
+                </VerticalStackLayout.GestureRecognizers>
+                <CollectionView ItemsSource="{Binding InterfaceItems}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium" />
+                                <Label Text="{Binding Address}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- 输入框 -->
+        <Entry
+            Grid.Row="1"
+            x:Name="InputIp"
+            FontSize="24"
+            Placeholder="请输入要Ping的IP地址"
+            Text="{Binding IpToPing, Mode=TwoWay}" />
+
+        <!-- 按钮 -->
+        <Button
+            Grid.Row="2"
+            Text="Ping"
+            Clicked="TryPing"
+            HorizontalOptions="Fill"
+            VerticalOptions="Center" />
+
+        <!-- 结果输出框（固定在底部） -->
+        <Editor
+            Grid.Row="3"
+            x:Name="OutputEditor"
+            HeightRequest="100"
+            Text=""
+            IsReadOnly="True"
+            BackgroundColor="LightGray" />
+    </Grid>
 </ContentPage>
