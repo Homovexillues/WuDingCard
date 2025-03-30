@@ -21,11 +21,7 @@ public partial class NotebookPage:ContentPage
 
 	protected override async void OnAppearing() {
 		base.OnAppearing();
-		await LoadNotebook(_notebookId);
 		await LoadSections(_notebookId); // 改为异步方法
-	}
-
-	private async Task LoadNotebook(int notebookId) {
 	}
 
 	private async Task LoadSections(int notebookId) {
@@ -42,9 +38,25 @@ public partial class NotebookPage:ContentPage
 	}
 
 	public async void AddSection(object sender,EventArgs e) {
+		try {
+			var title = await DisplayPromptAsync("新建主题","请输入标题","确认","取消");
+			if(!string.IsNullOrWhiteSpace(title)) {
+				var note = new Section { NotebookId = _notebookId,Title = title };
+				await QuickPlaySpell.Database.Dbcnn.InsertAsync(note);
+				Sections.Add(note);
+			}
+		}
+		catch(Exception ex) { throw new Exception(ex.Message,ex); }
 	}
 
 	public async void DeleteSection(object sender,EventArgs e) {
+		bool delete = await DisplayAlert("警告","此操作将删除本笔记本,是否确定?","确定","取消");
+		if(delete) {
+			if(sender is Button button && button.CommandParameter is int sectionId) {
+				var section = Sections.Where(n => int.Equals(n.SectionId,sectionId));
+				await QuickPlaySpell.Database.Dbcnn.DeleteAsync(section);
+			}
+		}
 	}
 
 	public async void EditSection(object sender,EventArgs e) {

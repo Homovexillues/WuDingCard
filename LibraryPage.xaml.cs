@@ -44,16 +44,23 @@ public partial class LibraryPage:ContentPage
 	private async void DeleteNoteBook(object sender,EventArgs e) {
 		bool delete = await DisplayAlert("警告","此操作将删除本笔记本,是否确定?","确定","取消");
 		if(delete) {
+			if(sender is Button button && button.CommandParameter is int notebookId) {
+				var notebook = Notebooks.Where(n => int.Equals(n.NotebookId,notebookId));
+				await QuickPlaySpell.Database.Dbcnn.DeleteAsync(notebook);
+			}
 		}
 	}
 
 	private async void AddNotebook(object sender,EventArgs e) {
-		string title = await DisplayPromptAsync("新建笔记本","请输入标题");
-		if(!string.IsNullOrWhiteSpace(title)) {
-			var newNotebook = new Notebook { Title = title };
-			await QuickPlaySpell.Database.Dbcnn.InsertAsync(newNotebook);
-			Notebooks.Add(newNotebook); // 直接添加到ObservableCollection
+		try {
+			string title = await DisplayPromptAsync("新建笔记本","请输入标题","确认","取消");
+			if(!string.IsNullOrWhiteSpace(title)) {
+				var newNotebook = new Notebook { Title = title };
+				await QuickPlaySpell.Database.Dbcnn.InsertAsync(newNotebook);
+				Notebooks.Add(newNotebook); // 直接添加到ObservableCollection
+			}
 		}
+		catch(Exception ex) { throw new Exception(ex.Message,ex); }
 	}
 }
 

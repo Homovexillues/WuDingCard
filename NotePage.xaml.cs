@@ -6,14 +6,14 @@ public partial class NotePage:ContentPage
 {
 	private readonly int _noteId;
 	private readonly Note _note;
-	public string Content { get; set; }
-	public string Title { get; set; }
+	public string NoteContent { get; set; }
+	public string NotePageTitle { get; set; }
 
 	public NotePage(int noteId) {
 		_noteId = noteId;
 		_note = QuickPlaySpell.Database.Get<Note>(noteId);
-		Title = _note.Title;
-		Content = _note.Content;
+		NotePageTitle = _note.Title;
+		NoteContent = _note.Content;
 		InitializeComponent();
 		BindingContext = this;
 	}
@@ -28,8 +28,11 @@ public partial class NotePage:ContentPage
 	}
 
 	public async void SaveNote() {
+		await QuickPlaySpell.Database.Dbcnn.UpdateAsync(_note);
 	}
 
 	public async void SaveNote(object sender,EventArgs e) {
+		_note.Content = NoteContent;
+		await QuickPlaySpell.Database.Dbcnn.UpdateAsync(_note);
 	}
 }

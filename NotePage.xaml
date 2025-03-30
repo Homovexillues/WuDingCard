@@ -29,9 +29,7 @@
                 <Setter Property="Margin" Value="0,8,0,16" />
             </Style>
 
-            <Style TargetType="Frame">
-                <Setter Property="CornerRadius" Value="12" />
-                <Setter Property="HasShadow" Value="True" />
+            <Style TargetType="Border">
                 <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
                 <Setter Property="Padding" Value="16" />
             </Style>
@@ -57,7 +55,7 @@
                 <!-- 标题输入框 -->
                 <Editor Grid.Column="1"
                         Placeholder="请输入标题..."
-                        Text="{Binding Title}"
+                        Text="{Binding NotePageTitle}"
                         VerticalOptions="Center"
                         HeightRequest="50"
                         MinimumWidthRequest="100"
@@ -79,7 +77,7 @@
         <!-- 内容编辑区 -->
         <Border Grid.Row="1">
             <Editor Placeholder="请输入内容..."
-                    Text="{Binding Content}"
+                    Text="{Binding NoteContent}"
                     IsSpellCheckEnabled="True"
                     AutoSize="TextChanges" />
         </Border>
