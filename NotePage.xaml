@@ -2,12 +2,86 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WuDingCard.NotePage"
-             Title="笔记页">
-    <StackLayout>
-        <HorizontalStackLayout>
-            <Label Text="标题:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-            <Editor Placeholder="标题" Text="{Binding Title}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-        </HorizontalStackLayout>
-        <Editor Placeholder="内容" Text="{Binding Content}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-    </StackLayout>
+             Title="笔记页"
+             BackgroundColor="{StaticResource PageBackgroundColor}"
+             Padding="16">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- 主题颜色 -->
+            <Color x:Key="PrimaryColor">#2196F3</Color>
+            <Color x:Key="AccentColor">#FF5722</Color>
+            <Color x:Key="TextColor">#2C3E50</Color>
+            <Color x:Key="CardBackgroundColor">#FFFFFF</Color>
+            <Color x:Key="PlaceholderColor">#95A5A6</Color>
+            <Color x:Key="PageBackgroundColor">#ECF0F1</Color>
+
+            <!-- 样式定义 -->
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            </Style>
+
+            <Style TargetType="Editor">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
+                <Setter Property="Margin" Value="0,8,0,16" />
+            </Style>
+
+            <Style TargetType="Frame">
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+                <Setter Property="Padding" Value="16" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!-- 标题输入 -->
+        <Border Grid.Row="0">
+            <Grid ColumnDefinitions="Auto, *, Auto">
+                <!-- 标题标签 -->
+                <Label  Grid.Column="0"
+                        Text="标题："
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        VerticalOptions="Center"
+                        Margin="0,0,8,0" />
+
+                <!-- 标题输入框 -->
+                <Editor Grid.Column="1"
+                        Placeholder="请输入标题..."
+                        Text="{Binding Title}"
+                        VerticalOptions="Center"
+                        HeightRequest="50"
+                        MinimumWidthRequest="100"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start" />
+
+                <!-- 保存按钮 -->
+                <Button Grid.Column="2"
+                        Text="保存"
+                        Clicked="SaveNote"
+                        BackgroundColor="{StaticResource PrimaryColor}"
+                        TextColor="White"
+                        CornerRadius="8"
+                        WidthRequest="100"
+                        HorizontalOptions="End" />
+            </Grid>
+        </Border>
+
+        <!-- 内容编辑区 -->
+        <Border Grid.Row="1">
+            <Editor Placeholder="请输入内容..."
+                    Text="{Binding Content}"
+                    IsSpellCheckEnabled="True"
+                    AutoSize="TextChanges" />
+        </Border>
+    </Grid>
 </ContentPage>

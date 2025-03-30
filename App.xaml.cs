@@ -4,6 +4,7 @@ public partial class App:Application
 {
 	public App() {
 		InitializeComponent();
+		Task.Run(async () => { await QuickPlaySpell.Database.InitializeAsync(); });
 	}
 
 	protected override Window CreateWindow(IActivationState? activationState) {

@@ -1,23 +1,47 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WuDingCard.NoteBookPage"
-             Title="笔记本">
-    <StackLayout Padding="10">
-        <Button Text="添加笔记本" Clicked="AddNewNote" />
-        <CollectionView ItemsSource="{Binding Notes}">
+             x:Class="WuDingCard.NotebookPage"
+             Title="{Binding Title}">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- 操作栏 -->
+        <Button Text="新建主题"
+                Clicked="AddSection"
+                HorizontalOptions="Start"
+                Margin="10" />
+
+        <!-- 笔记本列表 -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Sections}"
+                        SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="10" Margin="5">
-                        <StackLayout>
-                            <Label Text="{Binding Title}" FontSize="Medium" />
-                            <Label Text="{Binding CreateDate,StringFormat='创建于：{0:yyyy-MM-dd HH:mm}'}" FontSize="Small" />
-                            <Label Text="{Binding LastModifiedDate,StringFormat='最后修改于：{0:yyyy-MM-dd HH:mm}'}" FontSize="Small" />
-                            <Button Text="查看" Clicked="ViewSections" CommandParameter="{Binding Id}" />
-                        </StackLayout>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EditSection" CommandParameter="{Binding SectionId}" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="*,Auto,Auto"
+                              RowDefinitions="Auto,Auto">
+                            <Label Text="{Binding Title}"
+                                   FontSize="16"
+                                   Grid.Column="0"
+                                   Grid.Row="0" />
+
+                            <Label Text="{Binding CreatedDate, StringFormat='创建时间: {0}'}"
+                                   TextColor="Gray"
+                                   Grid.Column="0"
+                                   Grid.Row="1" />
+
+                            <Button Text="删除"
+                                    Clicked="DeleteSection"
+                                    CommandParameter="{Binding SectionId}"
+                                    Grid.Column="2"
+                                    Grid.RowSpan="2"
+                                    BackgroundColor="Red" />
+                        </Grid>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </Grid>
 </ContentPage>

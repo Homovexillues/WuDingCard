@@ -44,8 +44,8 @@
         Title="历史上的今天"
         ContentTemplate="{DataTemplate local:TodayInHistory}"
         Route="TodayInHistory" />
- 	<ShellContent
+    <ShellContent
         Title="笔记本"
-        ContentTemplate="{DataTemplate local:NoteBookPage}"
-        Route="NoteBookPage" />
+        ContentTemplate="{DataTemplate local:LibraryPage}"
+        Route="LibraryPage" />
 </Shell>
