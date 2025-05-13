@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Text.Json;
 
 namespace WuDingCard;
@@ -29,6 +30,11 @@ public partial class TextFormattingPage:ContentPage
 			else result += referenceDic[$"{font}"];
 		}
 		OutputEditor.Text = result;
+		SemanticScreenReader.Announce(OutputEditor.Text);
+	}
+
+	private async void ConvertToMD5Hash(object sender,EventArgs e) {
+		OutputEditor.Text = QuickPlaySpell.CalculateMD5(InputEditor.Text);
 		SemanticScreenReader.Announce(OutputEditor.Text);
 	}
 

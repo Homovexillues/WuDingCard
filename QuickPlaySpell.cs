@@ -1,5 +1,7 @@
 ﻿using SQLite;
 using System.Diagnostics;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WuDingCard;
 
@@ -26,7 +28,7 @@ public static class QuickPlaySpell
 		/// <summary>
 		/// 将数据库文件从软件中提取出来
 		/// </summary>
-		/// <returns> </returns>
+		/// <returns></returns>
 		public static async Task InitializeAsync() {
 			// 确保目录存在
 			var dirPath = Path.GetDirectoryName(DbPath);
@@ -38,17 +40,17 @@ public static class QuickPlaySpell
 #if WINDOWS
 			if(!File.Exists(DbPath)) {
 #endif
-			try {
-				// 从应用资源复制预置数据库
-				using var inStream = await FileSystem.OpenAppPackageFileAsync("Resources/Database/wudingcard.db");
-				using var outStream = File.Create(DbPath);
-				await inStream.CopyToAsync(outStream);
-			}
-			catch(Exception ex) {
-				await Log.WarnAsync($"复制预置数据库失败，将创建空库: {ex.Message}");
-				// 创建空表
-				await CreateTablesAsync();
-			}
+				try {
+					// 从应用资源复制预置数据库
+					using var inStream = await FileSystem.OpenAppPackageFileAsync("Resources/Database/wudingcard.db");
+					using var outStream = File.Create(DbPath);
+					await inStream.CopyToAsync(outStream);
+				}
+				catch(Exception ex) {
+					await Log.WarnAsync($"复制预置数据库失败，将创建空库: {ex.Message}");
+					// 创建空表
+					await CreateTablesAsync();
+				}
 #if WINDOWS
 			}
 			else {
@@ -77,6 +79,19 @@ public static class QuickPlaySpell
 	}
 
 	#endregion 数据库
+
+	/// <summary>
+	/// 计算一段文本的MD5值
+	/// </summary>
+	internal static string CalculateMD5(string input) {
+		byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+		byte[] hashBytes = MD5.HashData(inputBytes);
+		StringBuilder sb = new();
+		for(int i = 0;i < hashBytes.Length;i++) {
+			sb.Append(hashBytes[i].ToString("x2")); // 转换为十六进制字符串
+		}
+		return sb.ToString();
+	}
 }
 
 #region 日志

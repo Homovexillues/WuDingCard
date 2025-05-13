@@ -21,6 +21,9 @@
         <Button Text="转换为火星文"
                 FontSize="20"
                 Clicked="ConvertToMarFont" />
+        <Button Text="计算MD5哈希值"
+                FontSize="20"
+                Clicked="ConvertToMD5Hash" />
         <Editor
             x:Name="OutputEditor"
             Placeholder="此处显示输出内容"
