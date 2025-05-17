@@ -48,4 +48,8 @@
         Title="笔记本"
         ContentTemplate="{DataTemplate local:LibraryPage}"
         Route="LibraryPage" />
+    <ShellContent
+        Title="查找文件"
+        ContentTemplate="{DataTemplate local:FindTextFromFiles}"
+        Route="FindTextFromFiles" />
 </Shell>

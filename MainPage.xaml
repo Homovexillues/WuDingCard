@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WuDingCard.MainPage">
 
-    <ScrollView>
+    <Grid>
+        <Grid.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Right"
+                                    Swiped="OnSwipedHandler" />
+        </Grid.GestureRecognizers>
         <VerticalStackLayout
             Padding="0,0"
             Spacing="25">
-            <VerticalStackLayout.GestureRecognizers>
-                <SwipeGestureRecognizer Direction="Right"
-            Swiped="OnSwipedHandler" />
-            </VerticalStackLayout.GestureRecognizers>
             <Image
                 Source="toph.JPG"
                 HeightRequest="700"
@@ -20,5 +20,5 @@
                 Text="你好"
                 Clicked="ALOHA" />
         </VerticalStackLayout>
-    </ScrollView>
+    </Grid>
 </ContentPage>
