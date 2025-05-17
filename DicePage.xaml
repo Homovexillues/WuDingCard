@@ -2,114 +2,258 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WuDingCard.DicePage"
-             Title="骰子">
-    <VerticalStackLayout Padding="20">
-        <VerticalStackLayout.GestureRecognizers>
-            <SwipeGestureRecognizer Direction="Right"
-                        Swiped="OnSwipedHandler" />
-        </VerticalStackLayout.GestureRecognizers>
-        <Label
-            x:Name="OneDiceFour"
-            Text="1D4="
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-        <Button
-            x:Name="RollDiceFour"
-            Text="1D4="
-            SemanticProperties.Hint="Counts the number of times you click"
-            Clicked="RollOneDiceFour"
-            HorizontalOptions="Fill" />
-        <Label
-            x:Name="OneDiceSix"
-            Text="1D6="
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-        <Button
-            x:Name="RollDiceSix"
-            Text="1D6="
-            SemanticProperties.Hint="Counts the number of times you click"
-            Clicked="RollOneDiceSix"
-            HorizontalOptions="Fill" />
-        <Label
-            x:Name="OneDiceEight"
-            Text="1D8="
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-        <Button
-            x:Name="RollDiceEight"
-            Text="1D8="
-            SemanticProperties.Hint="Counts the number of times you click"
-            Clicked="RollOneDiceEight"
-            HorizontalOptions="Fill" />
-        <Label
-            x:Name="OneDiceTen"
-            Text="1D10="
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-        <Button
-            x:Name="RollDiceTen"
-            Text="1D10"
-            SemanticProperties.Hint="Counts the number of times you click"
-            Clicked="RollOneDiceTen"
-            HorizontalOptions="Fill" />
-        <Label
-            x:Name="OneDiceTwenty"
-            Text="1D20="
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-        <Button
-            x:Name="RollDiceTwenty"
-            Text="1D20="
-            SemanticProperties.Hint="Counts the number of times you click"
-            Clicked="RollOneDiceTwenty"
-            HorizontalOptions="Fill" />
-        <Label
-            x:Name="OneDiceHundred"
-            Text="1D100="
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-        <Button
-            x:Name="RollDiceHundred"
-            Text="1D100="
-            SemanticProperties.Hint="Counts the number of times you click"
-            Clicked="RollOneDiceHundred"
-            HorizontalOptions="Fill" />
-        <!--用这个控件将内容限定在一行里-->
-        <HorizontalStackLayout Spacing="10" VerticalOptions="Fill" HorizontalOptions="Center">
-            <Editor x:Name="InputDiceCount"
-                FontSize="24"
-                HorizontalTextAlignment="End"
-                VerticalOptions="Center"
-                Placeholder="骰子数量"
-                Margin="0"
-                BackgroundColor="Transparent"
-                Text="{Binding DiceCount,Mode=TwoWay}" />
-            <Label Text="D"
-                FontSize="24"
-                VerticalOptions="Center" />
-            <!--添加框中默认显示文本-->
-            <Entry x:Name="InputSidedCount"
-                FontSize="24"
-                Placeholder="骰子面数"
-                Text="{Binding SidedCount, Mode=TwoWay}" />
-            <Label Text="="
-                FontSize="24"
-                VerticalOptions="Center" />
-        </HorizontalStackLayout>
-        <Editor x:Name="OutputResult"
-            FontSize="24"
-            Placeholder="结果"
-            HorizontalOptions="FillAndExpand"
-            IsReadOnly="True"
-            Text="{Binding Result}" />
-        <Button Text="{Binding ButtonText}"
-            Clicked="RollCustomizeDice"
-            HorizontalOptions="Fill" />
-    </VerticalStackLayout>
+             Title="骰子"
+             BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#1F1F1F}">
+    <ScrollView>
+        <Grid Padding="20" RowSpacing="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right"
+                                        Swiped="OnSwipedHandler" />
+            </Grid.GestureRecognizers>
+
+            <!-- 1D4 -->
+            <Label Grid.Row="0"
+                x:Name="OneDiceFour"
+                Text="1D4="
+                Style="{StaticResource SubHeadline}"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                Margin="0,10,0,0"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="四面骰" />
+
+            <Button Grid.Row="1"
+                x:Name="RollDiceFour"
+                Text="掷 1D4 骰子"
+                SemanticProperties.Hint="掷一个四面骰子"
+                Clicked="RollOneDiceFour"
+                BackgroundColor="{AppThemeBinding Light=#4285F4, Dark=#2D5FBE}"
+                TextColor="White"
+                FontSize="16"
+                CornerRadius="8"
+                Margin="0,0,0,5"
+                HorizontalOptions="Fill" />
+
+            <!-- 1D6 -->
+            <Label Grid.Row="2"
+                x:Name="OneDiceSix"
+                Text="1D6="
+                Style="{StaticResource SubHeadline}"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="六面骰" />
+
+            <Button Grid.Row="3"
+                x:Name="RollDiceSix"
+                Text="掷 1D6 骰子"
+                SemanticProperties.Hint="掷一个六面骰子"
+                Clicked="RollOneDiceSix"
+                BackgroundColor="{AppThemeBinding Light=#EA4335, Dark=#BE2D2D}"
+                TextColor="White"
+                FontSize="16"
+                CornerRadius="8"
+                Margin="0,0,0,5"
+                HorizontalOptions="Fill" />
+
+            <!-- 1D8 -->
+            <Label Grid.Row="4"
+                x:Name="OneDiceEight"
+                Text="1D8="
+                Style="{StaticResource SubHeadline}"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="八面骰" />
+
+            <Button Grid.Row="5"
+                x:Name="RollDiceEight"
+                Text="掷 1D8 骰子"
+                SemanticProperties.Hint="掷一个八面骰子"
+                Clicked="RollOneDiceEight"
+                BackgroundColor="{AppThemeBinding Light=#FBBC05, Dark=#BE952D}"
+                TextColor="White"
+                FontSize="16"
+                CornerRadius="8"
+                Margin="0,0,0,5"
+                HorizontalOptions="Fill" />
+
+            <!-- 1D10 -->
+            <Label Grid.Row="6"
+                x:Name="OneDiceTen"
+                Text="1D10="
+                Style="{StaticResource SubHeadline}"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="十面骰" />
+
+            <Button Grid.Row="7"
+                x:Name="RollDiceTen"
+                Text="掷 1D10 骰子"
+                SemanticProperties.Hint="掷一个十面骰子"
+                Clicked="RollOneDiceTen"
+                BackgroundColor="{AppThemeBinding Light=#34A853, Dark=#2D8E46}"
+                TextColor="White"
+                FontSize="16"
+                CornerRadius="8"
+                Margin="0,0,0,5"
+                HorizontalOptions="Fill" />
+
+            <!-- 1D20 -->
+            <Label Grid.Row="8"
+                x:Name="OneDiceTwenty"
+                Text="1D20="
+                Style="{StaticResource SubHeadline}"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="二十面骰" />
+
+            <Button Grid.Row="9"
+                x:Name="RollDiceTwenty"
+                Text="掷 1D20 骰子"
+                SemanticProperties.Hint="掷一个二十面骰子"
+                Clicked="RollOneDiceTwenty"
+                BackgroundColor="{AppThemeBinding Light=#673AB7, Dark=#4527A0}"
+                TextColor="White"
+                FontSize="16"
+                CornerRadius="8"
+                Margin="0,0,0,5"
+                HorizontalOptions="Fill" />
+
+            <!-- 1D100 -->
+            <Label Grid.Row="10"
+                x:Name="OneDiceHundred"
+                Text="1D100="
+                Style="{StaticResource SubHeadline}"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="百面骰" />
+
+            <Button Grid.Row="11"
+                x:Name="RollDiceHundred"
+                Text="掷 1D100 骰子"
+                SemanticProperties.Hint="掷一个百面骰子"
+                Clicked="RollOneDiceHundred"
+                BackgroundColor="{AppThemeBinding Light=#FF5722, Dark=#BF360C}"
+                TextColor="White"
+                FontSize="16"
+                CornerRadius="8"
+                Margin="0,0,0,15"
+                HorizontalOptions="Fill" />
+
+            <!-- 自定义骰子 -->
+            <Frame Grid.Row="12"
+                   BorderColor="{AppThemeBinding Light=#DDDDDD, Dark=#444444}"
+                   BackgroundColor="{AppThemeBinding Light=White, Dark=#2D2D2D}"
+                   CornerRadius="10"
+                   HasShadow="True"
+                   Padding="15">
+                <StackLayout Spacing="15">
+                    <Label Text="自定义骰子"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                           HorizontalOptions="Center" />
+
+                    <HorizontalStackLayout Spacing="10"
+                                          VerticalOptions="Center"
+                                          HorizontalOptions="Center">
+                        <Frame BorderColor="{AppThemeBinding Light=#DDDDDD, Dark=#444444}"
+                               BackgroundColor="{AppThemeBinding Light=#F8F8F8, Dark=#333333}"
+                               CornerRadius="8"
+                               Padding="5,0"
+                               HasShadow="False">
+                            <Editor x:Name="InputDiceCount"
+                                   FontSize="24"
+                                   HorizontalTextAlignment="End"
+                                   VerticalOptions="Fill"
+                                   HorizontalOptions="Fill"
+                                   Placeholder="数量"
+                                   WidthRequest="80"
+                                   HeightRequest="50"
+                                   BackgroundColor="Transparent"
+                                   TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                                   Text="{Binding DiceCount,Mode=TwoWay}" />
+                        </Frame>
+
+                        <Label Text="D"
+                              FontSize="28"
+                              FontAttributes="Bold"
+                              TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                              VerticalOptions="Center" />
+
+                        <Frame BorderColor="{AppThemeBinding Light=#DDDDDD, Dark=#444444}"
+                               BackgroundColor="{AppThemeBinding Light=#F8F8F8, Dark=#333333}"
+                               CornerRadius="8"
+                               Padding="5,0"
+                               HasShadow="False">
+                            <Entry x:Name="InputSidedCount"
+                                  FontSize="24"
+                                  Placeholder="面数"
+                                  WidthRequest="80"
+                                  TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                                  Text="{Binding SidedCount, Mode=TwoWay}" />
+                        </Frame>
+
+                        <Label Text="="
+                              FontSize="28"
+                              FontAttributes="Bold"
+                              TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                              VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <Frame BorderColor="{AppThemeBinding Light=#DDDDDD, Dark=#444444}"
+                           BackgroundColor="{AppThemeBinding Light=#F8F8F8, Dark=#333333}"
+                           CornerRadius="8"
+                           Padding="10"
+                           HasShadow="False">
+                        <Editor x:Name="OutputResult"
+                               FontSize="24"
+                               Placeholder="结果"
+                               HeightRequest="80"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               IsReadOnly="True"
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                               Text="{Binding Result}" />
+                    </Frame>
+
+                    <Button Text="{Binding ButtonText}"
+                           Clicked="RollCustomizeDice"
+                           BackgroundColor="{AppThemeBinding Light=#9C27B0, Dark=#6A1B9A}"
+                           TextColor="White"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           CornerRadius="8"
+                           Padding="0,10"
+                           HorizontalOptions="Fill" />
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>
 </ContentPage>

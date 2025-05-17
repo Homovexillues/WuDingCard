@@ -77,15 +77,21 @@ public partial class DicePage:ContentPage, INotifyPropertyChanged
 		OutputResult.Text = string.Empty;
 		_ = int.TryParse(DiceCount,out int diceCount) ? diceCount : 0;
 		_ = int.TryParse(SidedCount,out int sidedCount) ? sidedCount : 0;
-		int sumNumber = 0;
-		for(int i = 0;i < diceCount;i++) {
-			int randomNumber = random.Next(1,sidedCount + 1);
-			OutputResult.Text += $"{randomNumber}";
-			if(i != diceCount - 1) OutputResult.Text += "+";
-			sumNumber += randomNumber;
+		if(sidedCount <= 0 || diceCount <= 0) {
+			OutputResult.Text += $"骰子数或面数不能小于等于0";
+			SemanticScreenReader.Announce(OutputResult.Text);
 		}
-		OutputResult.Text += $"={sumNumber}";
-		SemanticScreenReader.Announce(OutputResult.Text);
+		else {
+			int sumNumber = 0;
+			for(int i = 0;i < diceCount;i++) {
+				int randomNumber = random.Next(1,sidedCount + 1);
+				OutputResult.Text += $"{randomNumber}";
+				if(i != diceCount - 1) OutputResult.Text += "+";
+				sumNumber += randomNumber;
+			}
+			OutputResult.Text += $"={sumNumber}";
+			SemanticScreenReader.Announce(OutputResult.Text);
+		}
 	}
 
 	private void RollOneDiceFour(object sender,EventArgs e) {

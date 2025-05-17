@@ -6,8 +6,9 @@
     <ContentPage.Content>
         <ScrollView>
             <Grid>
+                <!--只要这样对Grid添加手势识别就可以了-->
                 <Grid.GestureRecognizers>
-                    <SwipeGestureRecognizer Direction="Right"
+                <SwipeGestureRecognizer Direction="Right"
                                         Swiped="OnSwipedHandler" />
                 </Grid.GestureRecognizers>
                 <Grid.RowDefinitions>
