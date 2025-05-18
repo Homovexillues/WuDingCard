@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WuDingCard.FindTextFromFiles"
+             Title="文件内容搜索"
+             BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#1F1F1F}">
+    <Grid Padding="20" RowSpacing="15">
+        <Grid.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Right"
+                                        Swiped="OnSwipedHandler" />
+        </Grid.GestureRecognizers>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- 标题 -->
+        <Label Grid.Row="0"
+               Text="文件内容搜索工具"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+               HorizontalOptions="Center"
+               Margin="0,0,0,10" />
+
+        <!-- 搜索内容输入 -->
+        <Frame Grid.Row="1"
+               BorderColor="{AppThemeBinding Light=#DDDDDD, Dark=#444444}"
+               BackgroundColor="{AppThemeBinding Light=White, Dark=#2D2D2D}"
+               CornerRadius="10"
+               HasShadow="True"
+               Padding="15">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="搜索内容"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}" />
+                <Entry x:Name="SearchContentEntry"
+                       Placeholder="请输入要搜索的内容"
+                       PlaceholderColor="{AppThemeBinding Light=#AAAAAA, Dark=#666666}"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- 文件选择区域 -->
+        <Frame Grid.Row="2"
+               BorderColor="{AppThemeBinding Light=#DDDDDD, Dark=#444444}"
+               BackgroundColor="{AppThemeBinding Light=White, Dark=#2D2D2D}"
+               CornerRadius="10"
+               HasShadow="True"
+               Padding="15">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="选择搜索范围"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}" />
+
+                <RadioButton x:Name="FileRadioButton"
+                             Content="选择文件"
+                             GroupName="SearchType"
+                             IsChecked="True"
+                             TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                             CheckedChanged="OnSearchTypeChanged" />
+
+                <RadioButton x:Name="FolderRadioButton"
+                             Content="选择文件夹"
+                             GroupName="SearchType"
+                             TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}"
+                             CheckedChanged="OnSearchTypeChanged" />
+
+                <HorizontalStackLayout x:Name="SubFolderLayout"
+                                      IsVisible="False"
+                                      Spacing="10"
+                                      Margin="20,0,0,0">
+                    <CheckBox x:Name="IncludeSubFoldersCheckBox"
+                              IsChecked="True"
+                              Color="{AppThemeBinding Light=#4285F4, Dark=#2D5FBE}" />
+                    <Label Text="包含子文件夹"
+                           VerticalOptions="Center"
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="10">
+                    <Entry x:Name="PathEntry"
+                           Placeholder="选择的路径将显示在这里"
+                           PlaceholderColor="{AppThemeBinding Light=#AAAAAA, Dark=#666666}"
+                           TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                           IsReadOnly="True"
+                           HorizontalOptions="FillAndExpand" />
+
+                    <Button x:Name="BrowseButton"
+                            Text="浏览"
+                            Clicked="OnBrowseClicked"
+                            BackgroundColor="{AppThemeBinding Light=#4285F4, Dark=#2D5FBE}"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Padding="15,5" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- 文件类型过滤 -->
+        <Frame Grid.Row="3"
+               BorderColor="{AppThemeBinding Light=#DDDDDD, Dark=#444444}"
+               BackgroundColor="{AppThemeBinding Light=White, Dark=#2D2D2D}"
+               CornerRadius="10"
+               HasShadow="True"
+               Padding="15">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="文件类型过滤"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}" />
+
+                <Entry x:Name="FileExtensionsEntry"
+                       Placeholder="输入文件扩展名，用逗号分隔（例如：.txt,.cs,.xml）"
+                       PlaceholderColor="{AppThemeBinding Light=#AAAAAA, Dark=#666666}"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- 搜索按钮 -->
+        <Button Grid.Row="4"
+                x:Name="SearchButton"
+                Text="开始搜索"
+                Clicked="OnSearchClicked"
+                BackgroundColor="{AppThemeBinding Light=#34A853, Dark=#2D8E46}"
+                TextColor="White"
+                FontSize="18"
+                FontAttributes="Bold"
+                CornerRadius="8"
+                Padding="0,10"
+                HorizontalOptions="Fill" />
+
+        <!-- 搜索结果 -->
+        <Frame Grid.Row="5"
+               BorderColor="{AppThemeBinding Light=#DDDDDD, Dark=#444444}"
+               BackgroundColor="{AppThemeBinding Light=White, Dark=#2D2D2D}"
+               CornerRadius="10"
+               HasShadow="True"
+               Padding="15"
+               VerticalOptions="FillAndExpand">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="搜索结果"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}" />
+
+                <CollectionView x:Name="ResultsCollectionView"
+                                SelectionMode="Single"
+                                SelectionChanged="OnResultSelected"
+                                VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Margin="0,5"
+                                   Padding="10"
+                                   BorderColor="{AppThemeBinding Light=#EEEEEE, Dark=#333333}"
+                                   BackgroundColor="{AppThemeBinding Light=#F8F8F8, Dark=#333333}"
+                                   CornerRadius="5">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding FileName}"
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}" />
+                                    <Label Text="{Binding FilePath}"
+                                           FontSize="12"
+                                           TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}" />
+                                </VerticalStackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenFileCommand}" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

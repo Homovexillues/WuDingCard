@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WuDingCard.RussionBlock"
+             Title="俄罗斯方块">
+    <Grid Padding="20" RowDefinitions="Auto,*,Auto">
+        <!-- 游戏信息区域 -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,*" Margin="0,0,0,10">
+            <VerticalStackLayout Grid.Column="0">
+                <Label Text="分数" FontSize="18" FontAttributes="Bold" />
+                <Label x:Name="ScoreLabel" Text="0" FontSize="24" />
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Column="1">
+                <Label Text="等级" FontSize="18" FontAttributes="Bold" />
+                <Label x:Name="LevelLabel" Text="1" FontSize="24" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- 游戏区域 -->
+        <Border Grid.Row="1" BackgroundColor="Gray" Padding="2">
+            <Border.Shadow>
+                <Shadow Brush="Black" Opacity="0.5" Offset="5,5" Radius="10" />
+            </Border.Shadow>
+            <Grid x:Name="GameGrid" BackgroundColor="Black">
+                <!-- 方块将在代码中动态添加 -->
+                <Grid.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Left" Swiped="OnSwipeLeft" />
+                    <SwipeGestureRecognizer Direction="Right" Swiped="OnSwipeRight" />
+                    <SwipeGestureRecognizer Direction="Down" Swiped="OnSwipeDown" />
+                    <TapGestureRecognizer Tapped="OnTap" />
+                </Grid.GestureRecognizers>
+            </Grid>
+        </Border>
+
+        <!-- 控制按钮区域 -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*" Margin="0,10,0,0">
+            <Button Grid.Column="0" Text="开始" Clicked="OnStartClicked" />
+            <Button Grid.Column="1" Text="暂停" Clicked="OnPauseClicked" />
+            <Button Grid.Column="2" Text="重置" Clicked="OnResetClicked" />
+        </Grid>
+    </Grid>
+</ContentPage>

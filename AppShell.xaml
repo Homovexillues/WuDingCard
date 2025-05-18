@@ -52,4 +52,12 @@
         Title="查找文件"
         ContentTemplate="{DataTemplate local:FindTextFromFiles}"
         Route="FindTextFromFiles" />
+    <ShellContent
+        Title="俄罗斯方块"
+        ContentTemplate="{DataTemplate local:RussionBlock}"
+        Route="RussionBlock" />
+    <ShellContent
+        Title="科学计算器"
+        ContentTemplate="{DataTemplate local:ScientificCalculator}"
+        Route="ScientificCalculator" />
 </Shell>
