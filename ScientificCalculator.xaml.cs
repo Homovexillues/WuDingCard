@@ -23,10 +23,20 @@ public partial class ScientificCalculator:ContentPage
 
 		if(isNewCalculation) {
 			DisplayTextBox.Text = digit;
+			// 检查并设置颜色
+			if(int.TryParse(DisplayTextBox.Text,out int num) && QuickPlaySpell.IsPrime(num))
+				DisplayTextBox.TextColor = Colors.Red;
+			else
+				DisplayTextBox.TextColor = Colors.Black;
 			isNewCalculation = false;
 		}
 		else {
 			DisplayTextBox.Text += digit;
+			// 检查并设置颜色
+			if(int.TryParse(DisplayTextBox.Text,out int num) && QuickPlaySpell.IsPrime(num))
+				DisplayTextBox.TextColor = Colors.Red;
+			else
+				DisplayTextBox.TextColor = Colors.Black;
 		}
 	}
 

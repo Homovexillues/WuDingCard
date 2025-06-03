@@ -38,6 +38,24 @@ public partial class TextFormattingPage:ContentPage
 		SemanticScreenReader.Announce(OutputEditor.Text);
 	}
 
+	private async void GenerateStrongPassword(object sender,EventArgs e) {
+		const int passwordLength = 16;
+		const string validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-_=+[]{}|;:,.<>?";
+
+		using var rng = RandomNumberGenerator.Create();
+		var bytes = new byte[passwordLength];
+		rng.GetBytes(bytes);
+
+		var passwordChars = new char[passwordLength];
+		for(int i = 0;i < passwordLength;i++) {
+			passwordChars[i] = validChars[bytes[i] % validChars.Length];
+		}
+
+		var password = new string(passwordChars);
+		OutputEditor.Text = password;
+		SemanticScreenReader.Announce(OutputEditor.Text);
+	}
+
 	private void OnSwipedHandler(object sender,SwipedEventArgs e) {
 		App.HandleGlobalSwipe(e);
 	}
