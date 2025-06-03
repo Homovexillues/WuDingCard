@@ -10,6 +10,7 @@ public partial class ScientificCalculator:ContentPage
 	private string pendingOperation = "";
 	private bool isNewCalculation = true;
 	private int currentBase = 10; // 默认十进制
+	private string formula = "";
 
 	public ScientificCalculator() {
 		InitializeComponent();
@@ -23,21 +24,19 @@ public partial class ScientificCalculator:ContentPage
 
 		if(isNewCalculation) {
 			DisplayTextBox.Text = digit;
-			// 检查并设置颜色
-			if(int.TryParse(DisplayTextBox.Text,out int num) && QuickPlaySpell.IsPrime(num))
-				DisplayTextBox.TextColor = Colors.Red;
-			else
-				DisplayTextBox.TextColor = Colors.Black;
+			formula = digit;
 			isNewCalculation = false;
 		}
 		else {
 			DisplayTextBox.Text += digit;
-			// 检查并设置颜色
-			if(int.TryParse(DisplayTextBox.Text,out int num) && QuickPlaySpell.IsPrime(num))
-				DisplayTextBox.TextColor = Colors.Red;
-			else
-				DisplayTextBox.TextColor = Colors.Black;
+			formula += digit;
 		}
+		UpdateFormulaLabel();
+		// 检查并设置颜色
+		if(int.TryParse(DisplayTextBox.Text,out int num) && QuickPlaySpell.IsPrime(num))
+			DisplayTextBox.TextColor = Colors.Red;
+		else
+			DisplayTextBox.TextColor = Colors.Black;
 	}
 
 	private void HexButton_Clicked(object sender,EventArgs e) {
@@ -61,14 +60,25 @@ public partial class ScientificCalculator:ContentPage
 
 		if(!isNewCalculation) {
 			CalculateResult();
+			formula += operation;
+		}
+		else {
+			// 避免连续操作符
+			if(!string.IsNullOrEmpty(formula) && "+-*/".Contains(formula[^1]))
+				formula = formula[..^1] + operation;
+			else
+				formula += operation;
 		}
 
+		UpdateFormulaLabel();
 		pendingOperation = operation;
 		isNewCalculation = true;
 	}
 
 	private void EqualsButton_Clicked(object sender,EventArgs e) {
 		CalculateResult();
+		formula += "=" + DisplayTextBox.Text;
+		UpdateFormulaLabel();
 		pendingOperation = "";
 		isNewCalculation = true;
 	}
@@ -216,6 +226,8 @@ public partial class ScientificCalculator:ContentPage
 			pendingOperation = "";
 		}
 
+		formula = "";
+		UpdateFormulaLabel();
 		isNewCalculation = true;
 	}
 
@@ -298,5 +310,9 @@ public partial class ScientificCalculator:ContentPage
 					break;
 			}
 		}
+	}
+
+	private void UpdateFormulaLabel() {
+		FormulaLabel.Text = formula;
 	}
 }
