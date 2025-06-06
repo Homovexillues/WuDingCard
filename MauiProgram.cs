@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Handlers.Items;
+using SQLite;
 using Syncfusion.Maui.Core.Hosting;
 
 namespace WuDingCard
@@ -6,6 +8,7 @@ namespace WuDingCard
 	public static class MauiProgram
 	{
 		public static MauiApp CreateMauiApp() {
+			Log.Info("开始记录日志");
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
@@ -17,8 +20,8 @@ namespace WuDingCard
 
 #if DEBUG
 			builder.Logging.AddDebug();
-#endif
 
+#endif
 			return builder.Build();
 		}
 	}

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WuDingCard", "WuDingCard.csproj", "{9F16F544-B051-4E52-9CB3-76BDB7B10868}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "..\ConsoleApp1\ConsoleApp1.csproj", "{0D02173D-6F17-4FD3-A770-6514159655EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +18,10 @@ Global
 		{9F16F544-B051-4E52-9CB3-76BDB7B10868}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{9F16F544-B051-4E52-9CB3-76BDB7B10868}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F16F544-B051-4E52-9CB3-76BDB7B10868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D02173D-6F17-4FD3-A770-6514159655EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D02173D-6F17-4FD3-A770-6514159655EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D02173D-6F17-4FD3-A770-6514159655EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D02173D-6F17-4FD3-A770-6514159655EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

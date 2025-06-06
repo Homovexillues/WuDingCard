@@ -41,9 +41,25 @@
         ContentTemplate="{DataTemplate local:TimePage}"
         Route="TimePage" />
     <ShellContent
+        Title="历史上的今天"
+        ContentTemplate="{DataTemplate local:TodayInHistory}"
+        Route="TodayInHistory" />
+    <ShellContent
         Title="笔记本"
-        ContentTemplate="{DataTemplate local:NoteBookPage}"
-        Route="NoteBookPage" />
+        ContentTemplate="{DataTemplate local:LibraryPage}"
+        Route="LibraryPage" />
+    <ShellContent
+        Title="查找文件"
+        ContentTemplate="{DataTemplate local:FindTextFromFiles}"
+        Route="FindTextFromFiles" />
+    <ShellContent
+        Title="俄罗斯方块"
+        ContentTemplate="{DataTemplate local:RussionBlock}"
+        Route="RussionBlock" />
+    <ShellContent
+        Title="科学计算器"
+        ContentTemplate="{DataTemplate local:ScientificCalculator}"
+        Route="ScientificCalculator" />
     <ShellContent
         Title="创建通知任务"
         ContentTemplate="{DataTemplate local:CreateNotificationPage}"

@@ -72,10 +72,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Resources\Documents\**" />
+	  <Compile Remove="Resources\Documents\**" />
+	  <EmbeddedResource Remove="Resources\Documents\**" />
+	  <MauiCss Remove="Resources\Documents\**" />
+	  <MauiXaml Remove="Resources\Documents\**" />
+	  <None Remove="Resources\Documents\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\AppIcon\appiconfg.svg" />
 	  <None Remove="Resources\Config\MarFont.json" />
+	  <None Remove="Resources\Database\wudingcard.db" />
 	  <None Remove="Resources\Config\Notifications.json" />
-	  <None Remove="Resources\Documents\hello-algo-1.0.0-zh-csharp.pdf" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -85,9 +94,6 @@
 	  <MauiAsset Include="Resources\Config\Notifications.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiAsset>
-	  <MauiAsset Include="Resources\Documents\hello-algo-1.0.0-zh-csharp.pdf">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </MauiAsset>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -95,7 +101,20 @@
 		<PackageReference Include="Markdig" Version="0.40.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.21" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
 		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="28.1.38" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="LibraryPage.xaml.cs">
+	    <DependentUpon>LibraryPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\wudingcard.db">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiAsset>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -108,25 +127,42 @@
 	  <MauiXaml Update="DicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="FindTextFromFiles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="GetIpPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="NoteBookPage.xaml">
+	  <MauiXaml Update="LibraryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NotebookPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="NotePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="NotificationPage.xaml">
+	  <MauiXaml Update="RussionBlock.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="TextFormattingPage.xaml">
+	  <MauiXaml Update="ScientificCalculator.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SectionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NotificationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>	  <MauiXaml Update="TextFormattingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="TextToSpeech.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="TimePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="TodayInHistory.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ViewPdf.xaml">

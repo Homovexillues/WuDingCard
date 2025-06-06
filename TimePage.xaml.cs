@@ -43,6 +43,15 @@ public partial class TimePage:ContentPage
 	protected override void OnDisappearing() {
 		base.OnDisappearing();
 		_timer?.Stop();
-		_timer?.Dispose();
+	}
+
+	protected override void OnAppearing() {
+		base.OnAppearing();
+		if(_timer == null) {
+			StartTimer(); // 重新创建 Timer
+		}
+		else {
+			_timer.Start(); // 继续计时
+		}
 	}
 }

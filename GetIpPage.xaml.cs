@@ -2,12 +2,14 @@ using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Text;
 
 namespace WuDingCard;
 
 public partial class GetIpPage:ContentPage
 {
 	public ObservableCollection<NetworkInterfaceInfo> InterfaceItems { get; set; }
+	public string IpToPing { get; set; }
 
 	public GetIpPage() {
 		InitializeComponent();
@@ -33,6 +35,21 @@ public partial class GetIpPage:ContentPage
 				}
 			}
 		}
+	}
+
+	public void TryPing(object sender,EventArgs e) {
+		Ping ping = new Ping();
+		if(string.IsNullOrEmpty(IpToPing)) {
+			OutputEditor.Text += $"ip地址不能为空";
+		}
+		PingReply reply = ping.Send(IpToPing);
+		if(reply.Status == IPStatus.Success) {
+			OutputEditor.Text += $"\nPing {IpToPing} 成功";
+		}
+		else {
+			OutputEditor.Text += $"\nPing {IpToPing} 失败";
+		}
+		SemanticScreenReader.Announce(OutputEditor.Text);
 	}
 
 	private void OnSwipedHandler(object sender,SwipedEventArgs e) {
