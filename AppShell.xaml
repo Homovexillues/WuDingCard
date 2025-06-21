@@ -4,64 +4,65 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WuDingCard"
-    FlyoutBehavior="Flyout"
     Title="WuDingCard">
 
-    <ShellContent
-        Title="主页"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.Resources>
+        <Style TargetType="TabBar">
+            <Setter Property="Shell.TabBarBackgroundColor" Value="#FFF" />
+            <Setter Property="Shell.TabBarTitleColor" Value="#FF4081" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="#888" />
+            <Setter Property="Shell.TabBarDisabledColor" Value="#CCC" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="#D81B60" />
+        </Style>
+        <Style TargetType="Tab">
+            <Setter Property="Shell.TabBarTitleColor" Value="#FFEB3B" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="#FFFFE0" />
+        </Style>
+    </Shell.Resources>
 
-    <ShellContent
-        Title="骰子"
-        ContentTemplate="{DataTemplate local:DicePage}"
-        Route="DicePage" />
-    <ShellContent
-        Title="获取设备IP地址"
-        ContentTemplate="{DataTemplate local:GetIpPage}"
-        Route="GetIpPage" />
-    <ShellContent
-        Title="处理文字格式"
-        ContentTemplate="{DataTemplate local:TextFormattingPage}"
-        Route="TextFormattingPage" />
-    <ShellContent
-        Title="每日新闻"
-        ContentTemplate="{DataTemplate local:DailyNewsPage}"
-        Route="DailyNewsPage" />
-    <ShellContent
-        Title="阅读pdf文档"
-        ContentTemplate="{DataTemplate local:ViewPdf}"
-        Route="ViewPdf" />
-    <ShellContent
-        Title="语音合成"
-        ContentTemplate="{DataTemplate local:TextToSpeechPage}"
-        Route="TextToSpeechPage" />
-    <ShellContent
-        Title="当前时间"
-        ContentTemplate="{DataTemplate local:TimePage}"
-        Route="TimePage" />
-    <ShellContent
-        Title="历史上的今天"
-        ContentTemplate="{DataTemplate local:TodayInHistory}"
-        Route="TodayInHistory" />
-    <ShellContent
-        Title="笔记本"
-        ContentTemplate="{DataTemplate local:LibraryPage}"
-        Route="LibraryPage" />
-    <ShellContent
-        Title="查找文件"
-        ContentTemplate="{DataTemplate local:FindTextFromFiles}"
-        Route="FindTextFromFiles" />
-    <ShellContent
-        Title="俄罗斯方块"
-        ContentTemplate="{DataTemplate local:RussionBlock}"
-        Route="RussionBlock" />
-    <ShellContent
-        Title="科学计算器"
-        ContentTemplate="{DataTemplate local:ScientificCalculator}"
-        Route="ScientificCalculator" />
-    <ShellContent
-        Title="创建通知任务"
-        ContentTemplate="{DataTemplate local:CreateNotificationPage}"
-        Route="CreateNotificationPage" />
+    <TabBar Shell.NavBarIsVisible="False" Shell.TabBarBackgroundColor="#009688">
+        <Tab Title="主页">
+            <ShellContent
+                Title="主页"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+        </Tab>
+        <Tab Title="网络工具">
+            <ShellContent Title="网络工具" ContentTemplate="{DataTemplate local:NetTools}" Route="NetTools" />
+            <ShellContent Title="获取设备IP地址" ContentTemplate="{DataTemplate local:GetIpPage}" Route="GetIpPage" />
+        </Tab>
+        <Tab Title="骰子">
+            <ShellContent Title="骰子" ContentTemplate="{DataTemplate local:DicePage}" Route="DicePage" />
+        </Tab>
+        <Tab Title="文字格式">
+            <ShellContent Title="处理文字格式" ContentTemplate="{DataTemplate local:TextFormattingPage}" Route="TextFormattingPage" />
+        </Tab>
+        <Tab Title="新闻">
+            <ShellContent Title="每日新闻" ContentTemplate="{DataTemplate local:DailyNewsPage}" Route="DailyNewsPage" />
+        </Tab>
+        <Tab Title="PDF">
+            <ShellContent Title="阅读pdf文档" ContentTemplate="{DataTemplate local:ViewPdf}" Route="ViewPdf" />
+        </Tab>
+        <Tab Title="语音">
+            <ShellContent Title="语音合成" ContentTemplate="{DataTemplate local:TextToSpeechPage}" Route="TextToSpeechPage" />
+        </Tab>
+        <Tab Title="时间">
+            <ShellContent Title="当前时间" ContentTemplate="{DataTemplate local:TimePage}" Route="TimePage" />
+        </Tab>
+        <Tab Title="历史">
+            <ShellContent Title="历史上的今天" ContentTemplate="{DataTemplate local:TodayInHistory}" Route="TodayInHistory" />
+        </Tab>
+        <Tab Title="笔记本">
+            <ShellContent Title="笔记本" ContentTemplate="{DataTemplate local:LibraryPage}" Route="LibraryPage" />
+        </Tab>
+        <Tab Title="查找文件">
+            <ShellContent Title="查找文件" ContentTemplate="{DataTemplate local:FindTextFromFiles}" Route="FindTextFromFiles" />
+        </Tab>
+        <Tab Title="俄罗斯方块">
+            <ShellContent Title="俄罗斯方块" ContentTemplate="{DataTemplate local:RussionBlock}" Route="RussionBlock" />
+        </Tab>
+        <Tab Title="计算器">
+            <ShellContent Title="科学计算器" ContentTemplate="{DataTemplate local:ScientificCalculator}" Route="ScientificCalculator" />
+        </Tab>
+    </TabBar>
 </Shell>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WuDingCard.NetTools"
+             Title="NetTools">
+    <VerticalStackLayout
+        Padding="20"
+        Spacing="20">
+        <!-- 模式选择 -->
+        <Label
+            Text="选择模式："
+            FontSize="18" />
+        <Picker
+            x:Name="ModePicker"
+            Title="请选择模式">
+            <Picker.Items>
+                <x:String>TCP Server</x:String>
+                <x:String>TCP Client</x:String>
+                <x:String>UDP</x:String>
+            </Picker.Items>
+        </Picker>
+        <!-- IP 和端口输入 -->
+        <Label
+            Text="目标 IP："
+            FontSize="18" />
+        <Entry
+            x:Name="IpEntry"
+            Placeholder="请输入目标 IP"
+            Keyboard="Text" />
+        <Label
+            Text="端口："
+            FontSize="18" />
+        <Entry
+            x:Name="PortEntry"
+            Placeholder="请输入端口"
+            Keyboard="Numeric" />
+        <!-- 数据输入 -->
+        <Label
+            Text="发送的数据："
+            FontSize="18" />
+        <Editor
+            x:Name="DataEditor"
+            Placeholder="请输入要发送的数据"
+            HeightRequest="100" />
+        <!-- 操作按钮 -->
+        <HorizontalStackLayout
+            Spacing="10">
+            <Button
+                Text="启动"
+                Clicked="OnStartClicked" />
+            <Button
+                Text="发送"
+                Clicked="OnSendClicked" />
+        </HorizontalStackLayout>
+        <!-- 接收数据展示 -->
+        <Label
+            Text="接收到的数据："
+            FontSize="18" />
+        <ScrollView>
+            <Label
+                x:Name="ReceivedDataLabel"
+                Text="接收到的数据将显示在这里" />
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,47 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WuDingCard.LibraryPage"
+             Title="笔记本管理">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- 操作栏 -->
+        <Button Text="新建笔记本"
+                Clicked="AddNotebook"
+                HorizontalOptions="Start"
+                Margin="10" />
+
+        <!-- 笔记本列表 -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Notebooks}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" Margin="5">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EditNoteBook" CommandParameter="{Binding NotebookId}" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="*,Auto,Auto"
+                              RowDefinitions="Auto,Auto">
+                            <Label Text="{Binding Title}"
+                                   FontSize="16"
+                                   Grid.Column="0"
+                                   Grid.Row="0" />
+
+                            <Label Text="{Binding CreatedDate, StringFormat='创建时间: {0}'}"
+                                   TextColor="Gray"
+                                   Grid.Column="0"
+                                   Grid.Row="1" />
+
+                            <Button Text="删除"
+                                    Clicked="DeleteNoteBook"
+                                    CommandParameter="{Binding NotebookId}"
+                                    Grid.Column="2"
+                                    Grid.RowSpan="2"
+                                    BackgroundColor="Red" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

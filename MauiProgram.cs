@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Controls.Handlers.Items;
-using SQLite;
 using Syncfusion.Maui.Core.Hosting;
 
 namespace WuDingCard

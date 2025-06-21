@@ -16,9 +16,6 @@
                 HeightRequest="700"
                 Aspect="AspectFit"
                 SemanticProperties.Description="dot net bot in a hovercraft number nine" />
-            <Button
-                Text="你好"
-                Clicked="ALOHA" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
